@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microsoft - Products</title>
+    <link rel="shortcut icon" href="windows_load.png" type="image/x-icon" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Courier New", Courier, monospace;
+        color: #333;
+        background-color: #cfd8dc;
+      }
+
+      /* Layout */
+      .container {
+        display: flex;
+        width: 90%;
+        max-width: 800px;
+        margin: 0 auto;
+        height: auto;
+        border: 3px solid #000080;
+        background-color: #ffffff;
+      }
+
+      /* Left Sidebar */
+      .sidebar {
+        background-color: #d6e5f5;
+        width: 25%;
+        padding: 20px;
+        min-height: 100vh;
+        border-right: 3px solid #000080;
+      }
+
+      .sidebar img {
+        display: block;
+        margin: 20px auto;
+        width: 80%;
+        border: 2px solid #0000cc;
+      }
+
+      .sidebar h3,
+      .sidebar h4 {
+        font-size: 18px;
+        color: #0000cc;
+        text-align: center;
+      }
+
+      .sidebar a {
+        display: block;
+        margin: 10px 0;
+        color: #000080;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .sidebar a:hover {
+        color: #ffcc00;
+        background-color: #0000cc;
+        padding: 5px;
+      }
+
+      .sidebar p {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      /* Content Column */
+      .content-column {
+        padding: 20px;
+        flex: 1;
+      }
+
+      .content-column h2 {
+        margin: 15px 0;
+        font-size: 20px;
+        color: #000080;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      .content-column p {
+        margin-bottom: 10px;
+        line-height: 1.5;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .content-column a {
+        color: #0000cc;
+        text-decoration: none;
+      }
+
+      .content-column a:hover {
+        text-decoration: underline;
+        color: #ff0000;
+      }
+
+      .highlight-image {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .highlight-image img {
+        display: block;
+        margin: 0 auto;
+        border: 3px solid #000080;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 6px;
+        background-color: #000080;
+        color: #fff;
+        font-size: 12px;
+      }
+
+      .footer img {
+        margin: 10px;
+        width: 320px;
+      }
+
+      .marquee {
+        font-size: 14px;
+        color: #fff;
+        background-color: #000080;
+        padding: 10px;
+        margin: 20px 0;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      .marquee marquee {
+        font-size: 16px;
+        color: #ffff00;
+        padding-left: 10px;
+      }
+
+      .hit-counter {
+        text-align: center;
+        font-size: 16px;
+        margin-top: 20px;
+        color: #000080;
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        background: #000080;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+      }
+
+      .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+      }
+
+      .navbar li {
+        display: inline-block;
+      }
+
+      .navbar img {
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+      }
+
+      .navbar img:hover {
+        transform: rotate(90deg);
+        filter: brightness(0.8);
+        transition: transform 0.3s ease;
+      }
+
+      /* Utility */
+      .section-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #009933;
+      }
+
+      .search-container {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .search-container input[type="text"] {
+        padding: 5px;
+        width: 200px;
+        border: 2px solid #0000cc;
+        font-size: 14px;
+      }
+
+      .search-container input[type="submit"] {
+        padding: 5px;
+        background-color: #0000cc;
+        color: #fff;
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .nav-links {
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .nav-links a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #0000cc;
+        font-size: 14px;
+      }
+
+      .first-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .search-bar {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .search-bar input {
+        width: 80%;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #000080;
+        border-radius: 5px;
+      }
+
+      p {
+        display: block;
+      }
+
+      h2 {
+        display: block;
+      }
+
+      #clippy-chatbot {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: 320px;
+        background-color: #f0f0f0;
+        border: 3px solid #000080;
+        border-radius: 15px;
+        box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        z-index: 1000;
+        font-family: "Comic Sans MS", sans-serif;
+      }
+
+      /* Clippy Icon Styling */
+      #clippy-img {
+        width: 100px;
+        height: auto;
+        margin: 10px;
+        cursor: pointer;
+        animation: bounce 0.5s infinite alternate;
+      }
+
+      /* Chatbox container styling */
+      #chatbox {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        background-color: #e1e1e1;
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid #000080;
+      }
+
+      /* Chatlog for messages */
+      #chatlog {
+        max-height: 250px;
+        overflow-y: auto;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #ffffff;
+        border: 1px solid #000080;
+        border-radius: 8px;
+        font-size: 14px;
+        color: #333;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      /* Message Styling */
+      #chatlog p {
+        margin-bottom: 12px;
+        line-height: 1.5;
+      }
+
+      #chatlog p.user-message {
+        background-color: #d0f0c0;
+        padding: 8px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      #chatlog p.bot-message {
+        background-color: #f0e68c;
+        padding: 8px;
+        border-radius: 8px;
+        font-style: italic;
+        text-align: left;
+      }
+
+      #user-input {
+        padding: 10px;
+        border: 2px solid #000080;
+        border-radius: 5px;
+        font-size: 14px;
+        font-family: "Courier New", monospace;
+        margin-bottom: 10px;
+      }
+
+      #send-btn {
+        padding: 10px;
+        background-color: #000080;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-family: "Comic Sans MS", sans-serif;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      #send-btn:hover {
+        background-color: #0000cc;
+      }
+
+      /* Clippy bounce animation */
+      @keyframes bounce {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="clippy-chatbot">
+      <img src="clippy.png" alt="Clippy" id="clippy-img" />
+      <div style="margin-top: 10px; font-size: 14px; color: #000080">
+        Clippy from the 90s, DO YOU REMEMBER ME?
+      </div>
+      <div id="chatbox">
+        <div id="chatlog"></div>
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Ask me about Microsoft products..."
+          style="font-size: 12px"
+        />
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <ul>
+        <li>
+          <a href="index.html">
+            <img src="home.png" alt="Home" />
+          </a>
+        </li>
+        <li>
+          <a href="products.html">
+            <img src="products_page.png" alt="Products" />
+          </a>
+        </li>
+        <li>
+          <a href="ie.html">
+            <img src="ie_page.png" alt="Internet Explorer" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Container for Three Columns -->
+    <div class="container" style="margin-top: 10px">
+      <!-- Left Sidebar -->
+      <div class="sidebar">
+        <img src="header_products.png" alt="" class="first-image" />
+        <h3>Home Page</h3>
+        <h4>View Products by Category:</h4>
+        <a href="#">All</a>
+        <a href="#">Home</a>
+        <a href="#">Business</a>
+        <a href="#">Internet</a>
+        <a href="#">Developer</a>
+        <img src="internet_explorer.png" alt="Start Image" />
+        <p>Not experienced with the Internet? Click here to start.</p>
+      </div>
+
+      <!-- Middle Column -->
+      <div class="content-column">
+        <div class="header">
+          <img
+            src="micro_logo_products.png"
+            alt="Microsoft Logo"
+            style="height: 50px; width: 250px"
+          />
+        </div>
+
+        <h2>Microsoft Office</h2>
+        <p>
+          A family of productivity programs that let you focus on getting your
+          job done.
+        </p>
+        <p>Microsoft Access</p>
+        <p>Microsoft Excel</p>
+        <p>Microsoft FrontPage</p>
+        <p>Microsoft PowerPoint</p>
+        <p>Microsoft Project</p>
+        <p>Microsoft Schedule+</p>
+        <p>Microsoft Word</p>
+
+        <h2>Microsoft BackOffice</h2>
+        <p>
+          An integrated family of server software built on Microsoft Windows NT
+          Server.
+        </p>
+        <p>Includes:</p>
+        <p>Microsoft "Catapult" Server (Proxy Server)</p>
+        <p>Microsoft Exchange</p>
+        <p>Microsoft SQL Server</p>
+        <p>Microsoft SNA Server</p>
+        <p>Microsoft Systems Management Server</p>
+        <p>Microsoft NT Server includes:</p>
+        <p>Microsoft Internet Information Server</p>
+        <p>Microsoft Index Server</p>
+
+        <h2>Developer Products</h2>
+        <p>Tools and technologies for every developer.</p>
+        <p>
+          Microsoft offers a wide range of developer products and technologies.
+          Whether you are using a new development technology or something for
+          every developer.
+        </p>
+
+        <h2>Personal Productivity</h2>
+        <p>
+          Microsoft Works provides essential tools for easier everyday
+          computing.
+        </p>
+        <p>
+          It includes word processor, spreadsheet, database, drawing and
+          communications tools.
+        </p>
+        <p>
+          The TaskWizards give you start-to-finish help to get the job done.
+        </p>
+
+        <h2>Reference Products</h2>
+        <p>Access essential information and guides.</p>
+        <p>Gain quick and easy access to any information you need.</p>
+        <p>Reference works including dictionaries and encyclopedias.</p>
+
+        <h2>Kids Products</h2>
+        <p>Microsoft Kids offers products like "My First Encyclopedia."</p>
+        <p>
+          Learn about Microsoft Kids products like Scholastic's The Magic School
+          Bus Explores the Ocean and the brand new 3D title version of the 3D
+          Microsoft Press.
+        </p>
+
+        <h2>Microsoft Press</h2>
+        <p>Books, training resources, and software.</p>
+        <p>
+          Find award-winning books and interactive products about Microsoft
+          software and related topics.
+        </p>
+      </div>
+
+      <!-- Right Column -->
+      <div class="content-column">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for products..."
+            oninput="filterContent()"
+          />
+        </div>
+        <h2>Microsoft Windows</h2>
+        <p>Family of operating systems for businesses and homes.</p>
+        <p>
+          Here's the best place for information on Microsoft's family of desktop
+          and server operating systems:
+        </p>
+        <p>Windows 95</p>
+        <p>Windows NT Workstation</p>
+        <p>Windows NT Server</p>
+
+        <h2>Internet Products</h2>
+        <p>
+          Explore Microsoft Internet Explorer, MSN, and other Internet tools.
+        </p>
+        <p>
+          Whether you are looking for the net or to build a site, Microsoft has
+          the product for you.
+        </p>
+        <p>Internet Explorer</p>
+        <p>Microsoft FrontPage</p>
+        <p>Microsoft NetMeeting</p>
+        <p>ActiveX Control Pad</p>
+        <p>Visual J++</p>
+        <p>"Normandy" Family of Server</p>
+        <p>Microsoft "Catapult" Server (Proxy Server)</p>
+        <p>Microsoft Merchant System</p>
+        <p>Microsoft Windows NT Server which includes:</p>
+        <p>-- Internet Information Server</p>
+        <p>-- Microsoft Index Server</p>
+
+        <div class="highlight-image">
+          <img src="product_page_photo.png" alt="IIS Server" />
+          <p>Check Out Microsoft Internet Information Server</p>
+          <p>
+            The most powerful platform for a new generation of web applications.
+            It is integrated into Windows NT Server.
+          </p>
+        </div>
+
+        <h2>Games</h2>
+        <p>Microsoft’s lineup of games provides entertainment for all ages.</p>
+        <p>
+          Looking for lots of Big Bad Fun? Microsoft publishes a variety of
+          entertainment products, including Sport, Simulation, and Action
+          titles.
+        </p>
+
+        <h2>Hardware</h2>
+        <p>Keyboards, mice, and other innovative hardware products.</p>
+        <p>
+          Learn about hardware innovations such as the keyboard and mouse for
+          your computer, your kids, and your business.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <img src="product_page_footer.png" alt="Download IE" />
+      <p>&copy;1996 Microsoft Corporation</p>
+    </div>
+
+    <script>
+      function filterContent() {
+        const query = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const sections = document.querySelectorAll(".content-column");
+
+        sections.forEach((section) => {
+          const headings = section.querySelectorAll("h2");
+          const paragraphs = section.querySelectorAll("p");
+
+          let headingVisible = false;
+
+          paragraphs.forEach((paragraph) => {
+            if (paragraph.textContent.toLowerCase().includes(query)) {
+              paragraph.style.display = "";
+              headingVisible = true;
+            } else {
+              paragraph.style.display = "none";
+            }
+          });
+
+          headings.forEach((heading) => {
+            const associatedParagraphs = Array.from(paragraphs).filter(
+              (p) => p.previousElementSibling === heading
+            );
+            if (associatedParagraphs.some((p) => p.style.display !== "none")) {
+              heading.style.display = "";
+            } else {
+              heading.style.display = "none";
+            }
+          });
+        });
+      }
+      document
+        .getElementById("send-btn")
+        .addEventListener("click", function () {
+          const userInput = document.getElementById("user-input").value;
+          const chatlog = document.getElementById("chatlog");
+
+          if (userInput) {
+            const userMessage = document.createElement("p");
+            userMessage.textContent = "You: " + userInput;
+            userMessage.classList.add("user-message");
+            chatlog.appendChild(userMessage);
+
+            const botMessage = document.createElement("p");
+            botMessage.textContent = "Clippy: " + getClippyResponse(userInput);
+            botMessage.classList.add("bot-message");
+            chatlog.appendChild(botMessage);
+
+            chatlog.scrollTop = chatlog.scrollHeight;
+            document.getElementById("user-input").value = "";
+          } else {
+            const errorMessage = document.createElement("p");
+            errorMessage.textContent = "Clippy: Please enter a question!";
+            errorMessage.classList.add("bot-message");
+            chatlog.appendChild(errorMessage);
+
+            chatlog.scrollTop = chatlog.scrollHeight;
+          }
+        });
+
+      document
+        .getElementById("user-input")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("send-btn").click();
+          }
+        });
+
+      function getClippyResponse(input) {
+        const lowerInput = input.toLowerCase();
+
+        if (
+          lowerInput.includes("hi") ||
+          lowerInput.includes("hello") ||
+          lowerInput.includes("hey") ||
+          lowerInput.includes("yo") ||
+          lowerInput.includes("good morning") ||
+          lowerInput.includes("g'day") ||
+          lowerInput.includes("good day") ||
+          lowerInput.includes("gday")
+        ) {
+          const greetings = [
+            "Hey there! Need help with something? I'm your Clippy, always ready to assist!",
+            "Well, hello! How can I help you today? I’m all ears (and paperclips)!",
+            "Yo! What’s up? Need some Microsoft tips and tricks?",
+            "Good morning! Ready to make your computer experience even more fun?",
+            "Hi! It’s Clippy! What can I help you with today?",
+          ];
+          return greetings[Math.floor(Math.random() * greetings.length)];
+        }
+
+        if (lowerInput.includes("office")) {
+          return "Did you know? Microsoft Office includes Word, Excel, PowerPoint... and it’s like having a supercomputer in your pocket!";
+        } else if (lowerInput.includes("windows")) {
+          return "Windows 95 is like a whole new world! It even has that cool Start menu you love!";
+        } else if (lowerInput.includes("internet explorer")) {
+          return "Ah, Internet Explorer! It’s the best way to browse the web (at least for now)! Just make sure to check out those cool websites!";
+        } else if (lowerInput.includes("frontpage")) {
+          return "Microsoft FrontPage: It's the easiest way to build your own website. You're practically a web designer already!";
+        } else if (lowerInput.includes("games")) {
+          return "Microsoft games are the bomb! From card games to racing games, you're in for hours of fun!";
+        } else if (lowerInput.includes("excel")) {
+          return "Excel! It's more than just a spreadsheet. It’s a data powerhouse! You can make all those numbers dance!";
+        } else if (lowerInput.includes("word")) {
+          return "Word is so easy to use, you’ll be typing up a storm in no time! Did you know you can even add a spelling checker? Wild!";
+        } else if (lowerInput.includes("powerpoint")) {
+          return "PowerPoint is like magic for making presentations. You can add all kinds of crazy transitions! You'll look like a pro!";
+        } else if (lowerInput.includes("clip")) {
+          return "Hey! I see you're talking to me! Need help with something? I’ve got tons of tips from the '90s just for you!";
+        } else if (lowerInput.includes("microsoft")) {
+          return "Ah, Microsoft! The company that brings you Windows, Office, and more! It’s like a tech paradise!";
+        } else if (lowerInput.includes("help")) {
+          return "I'm here to help you with all things Microsoft! Whether it's Windows, Office, or any of their awesome products, just ask!";
+        }
+
+        const defaultResponses = [
+          "Oh, looks like I’m not sure about that! Want some help with Microsoft Office or Windows?",
+          "I can’t quite help with that, but I can show you some cool tips for Word and Excel!",
+          "Hmm, that’s outside my expertise! But I can help you make a PowerPoint slide deck in no time!",
+          "Not sure about that, but did you know Microsoft has tons of neat programs from the '90s? Let’s chat about those!",
+          "I’m stumped! Maybe I can help you with something Microsoft-y? I’m pretty good with Office and Windows stuff!",
+        ];
+        return defaultResponses[
+          Math.floor(Math.random() * defaultResponses.length)
+        ];
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+.clippy {
+  position: fixed;
+  max-width: 300px;
+  border-radius: 5px;
+  z-index: 1000;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.clippy.hidden {
+  display: none;
+}
+
+.clippy img {
+  width: 100px;
+  height: auto;
+}
+
+.clippy-message {
+  background-color: #ffcc00;
+  border: 2px solid #000080;
+  padding: 10px 15px;
+  color: #000080;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.clippy-message p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.clippy .close-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 24px;
+  height: 24px;
+  background-color: red;
+  border: 2px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 3px #ffaaaa;
+  border-radius: 4px;
+}
+
+.clippy .close-btn::before,
+.clippy .close-btn::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  background-color: #000;
+  transform: rotate(45deg);
+}
+
+.clippy .close-btn::after {
+  transform: rotate(-45deg);
+}
+
+.clippy .close-btn {
+  image-rendering: pixelated;
+}
+
+.clippy-message .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 16px;
+  color: #000080;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.clippy-message .close-btn:hover {
+  color: black;
+}

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Microsoft - 1996</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="clippy.css" />
+    <link rel="shortcut icon" href="windows_load.png" type="image/x-icon" />
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+        background-color: #cfd8dc;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+      }
+
+      audio {
+        display: none;
+      }
+
+      .container {
+        width: 750px;
+        margin: 0 auto;
+        height: auto;
+        overflow-y: auto;
+        border: 3px solid #000080;
+        background-color: #fff;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .header {
+        text-align: left;
+        padding: 20px;
+        border-bottom: 2px solid #000080;
+        background: linear-gradient(90deg, #d3d3d3, #f3f3f3);
+        font-size: 28px;
+      }
+
+      .header img {
+        vertical-align: middle;
+        width: 100px;
+      }
+
+      .header h1 {
+        display: inline;
+        font-size: 28px;
+        color: #000080;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+      }
+
+      .sidebar {
+        float: left;
+        width: 200px;
+        padding: 10px;
+        background-color: #d9e9f9;
+        border-right: 2px solid #000080;
+        border-bottom: 2px solid #000080;
+      }
+
+      .sidebar a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #000080;
+        padding: 12px;
+        border-bottom: 1px solid #ccc;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+      }
+
+      .sidebar a:hover {
+        background-color: #000080;
+        color: #ffcc00;
+      }
+
+      .sidebar a.left {
+        flex-direction: row;
+      }
+
+      .sidebar a.right {
+        flex-direction: row-reverse;
+      }
+
+      .sidebar a.left img,
+      .sidebar a.right img {
+        margin: 0 10px;
+        width: 20px;
+        height: 20px;
+      }
+
+      .content {
+        margin-left: 220px;
+        padding: 20px;
+      }
+
+      .content h2 {
+        font-size: 24px;
+        color: #000080;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        text-align: left;
+      }
+
+      .content p {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .content a {
+        color: #0000ff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .content a:hover {
+        text-decoration: underline;
+        color: #ffcc00;
+      }
+
+      .marquee {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        animation: marquee 10s linear infinite;
+      }
+
+      .marquee-text {
+        display: inline-block;
+        padding-right: 100%;
+        font-size: 16px;
+        color: #ffcc00;
+      }
+
+      /* Footer styles */
+      .footer {
+        background-color: #000080;
+        color: #fff;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 12px;
+        padding: 20px 10px;
+        position: relative;
+        border-top: 2px solid #000000;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .footer img {
+        vertical-align: middle;
+      }
+
+      .footer a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      .footer .top-section {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .footer .dropdowns {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 10px;
+      }
+
+      .footer .dropdowns select {
+        padding: 5px;
+        font-size: 12px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        color: #000;
+      }
+
+      .footer .navbar-button {
+        padding: 5px 10px;
+        background-color: #000080;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .footer .navbar-button:hover {
+        background-color: #ffcc00;
+        color: #000;
+      }
+
+      /* border for buttons */
+      button {
+        padding: 5px 15px;
+        background-color: #ffcc00;
+        border: 2px solid #000080;
+        color: #000;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #000080;
+        color: #ffcc00;
+      }
+
+      /* navbar */
+      .navbar {
+        background: #000080;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 3px solid #d3d3d3;
+        padding: 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+      }
+
+      .navbar li {
+        display: inline-block;
+      }
+
+      .navbar img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: transform 0.5s ease;
+      }
+
+      .navbar img:hover {
+        transform: rotate(90deg);
+        filter: brightness(0.8);
+        transition: transform 0.3s ease;
+      }
+
+      @keyframes pixelated {
+        0% {
+          filter: none;
+        }
+        50% {
+          filter: blur(2px);
+        }
+        100% {
+          filter: none;
+        }
+      }
+
+      h1,
+      .content h2 {
+        animation: pixelated 2s infinite;
+        text-shadow: 2px 2px #ffcc00, -2px -2px #000;
+      }
+
+      footer .marquee {
+        animation: marquee 15s linear infinite;
+      }
+      .popup {
+        position: fixed;
+        bottom: 20px;
+        right: -300px;
+        width: 250px;
+        background-color: #ffcc00;
+        color: #000080;
+        border: 2px solid #000080;
+        padding: 20px;
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        font-size: 16px;
+        animation: slideIn 1s forwards;
+        z-index: 9999;
+      }
+
+      @keyframes slideIn {
+        0% {
+          right: -300px;
+        }
+        100% {
+          right: 20px;
+        }
+      }
+
+      .popup button {
+        background-color: #000080;
+        color: #fff;
+        font-family: "Courier New", Courier, monospace;
+        padding: 8px 15px;
+        border: 2px solid #ffcc00;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .popup button:hover {
+        background-color: #ffcc00;
+        color: #000080;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      #loading-screen img {
+        width: 300px;
+        animation: spin 3s linear infinite;
+      }
+
+      /* Spin animation */
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .system-requirements {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+        animation: fadeIn 2s;
+      }
+
+      .system-requirements span {
+        font-weight: bold;
+        display: inline-block;
+        margin: 5px;
+      }
+
+      .system-requirements .red {
+        color: #f25022;
+        font-size: 22px;
+      }
+
+      .system-requirements .green {
+        color: #7fba00;
+        font-size: 22px;
+      }
+
+      .system-requirements .blue {
+        color: #0078d7;
+      }
+
+      .system-requirements .yellow {
+        color: #ffb900;
+        font-size: 22px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading-screen">
+      <div
+        style="
+          text-align: center;
+          font-family: 'Courier New', Courier, monospace;
+          color: #000;
+          margin-bottom: 20px;
+        "
+      >
+        <div class="system-requirements">
+          <span
+            class="blue"
+            style="
+              font-size: 30px;
+              text-shadow: 2px 2px #ffcc00;
+              animation: blink 1s infinite;
+            "
+            >⚙️ System Requirements</span
+          ><br />
+          <span class="red">Internet Explorer 3.0</span><br />
+          <span class="green">750x 800</span>
+          <span class="yellow">resolution</span>
+        </div>
+      </div>
+      <img src="windows_load.png" alt="Microsoft Logo" />
+    </div>
+
+    <audio id="windows-sound" src="windows_load.mp3" muted></audio>
+    <div id="clippy-container" class="clippy hidden">
+      <img id="clippy" src="clippy.png" alt="Clippy" />
+      <div class="clippy-message">
+        <span class="close-btn">&times;</span>
+        <p id="clippy-tip">
+          Did you know? Internet Explorer 3.0 introduced CSS support!
+        </p>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <ul>
+        <li>
+          <a href="index.html">
+            <img src="home.png" alt="Home" />
+          </a>
+        </li>
+        <li>
+          <a href="products.html">
+            <img src="products_page.png" alt="Products" />
+          </a>
+        </li>
+        <li>
+          <a href="ie.html">
+            <img src="ie_page.png" alt="Internet Explorer" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container" style="margin-top: 20px">
+      <div class="header">
+        <img src="microsoft.png" alt="Microsoft Logo" />
+        <h1>Where do you want to go today?</h1>
+      </div>
+      <div class="sidebar">
+        <a href="#" class="left"
+          ><img src="products.png" alt="Products Icon" /> Products</a
+        >
+        <a href="#" class="right"
+          ><img src="support.png" alt="Support Icon" /> Support</a
+        >
+        <a href="#" class="left"
+          ><img src="developers.png" alt="Developers Icon" /> For Developers
+          Only</a
+        >
+        <a href="#" class="right"
+          ><img src="partners.png" alt="Partners Icon" /> Partners &
+          Solutions</a
+        >
+        <a href="#" class="left"
+          ><img src="resource_center.png" alt="Internet Resource Center Icon" />
+          Internet Resource Center</a
+        >
+        <a href="#" class="right"
+          ><img src="internet_explorer.png" alt="Internet Explorer Icon" />
+          Microsoft Internet Explorer</a
+        >
+        <a href="#" class="left"
+          ><img src="visit_microsoft.png" alt="Visit Microsoft Icon" /> Visit
+          Microsoft</a
+        >
+        <a href="#" class="right"
+          ><img src="msn.png" alt="Microsoft Network Icon" /> Visit The
+          Microsoft Network</a
+        >
+      </div>
+      <div class="content">
+        <h2 style="font-size: 24px; color: #000">Welcome to Microsoft</h2>
+        <p style="font-size: 16px; color: #555">
+          The Worldwide Leader in Software for PCs.
+        </p>
+        <ul style="list-style-type: none; padding: 0">
+          <li>
+            <a href="#" style="color: #000; text-decoration: none">
+              <i class="fas fa-folder" style="color: #ffcc00"></i> Download
+              Microsoft Internet Explorer 3.0 Beta 1
+            </a>
+            <p>
+              The new open architecture for creating cool interactive web
+              content, providing users with a personalized web experience.
+              <a href="#">read a cnet review</a>, which calls Internet Explorer
+              3.0 "white hot."
+            </p>
+          </li>
+          <li>
+            <a href="#" style="color: #000; text-decoration: none">
+              <i class="fas fa-folder" style="color: #ffcc00"></i> Microsoft
+              Kicks Off With Euro 96
+            </a>
+            <p>
+              Europe's world-class football (soccer) championship starts June
+              8th. Find out how Microsoft technology will help the press, the
+              officials and the potential 6.9 billion worldwide audience follow
+              the action on TV and online.
+            </p>
+          </li>
+          <li>
+            <a href="#" style="color: #000; text-decoration: none">
+              <i class="fas fa-folder" style="color: #ffcc00"></i> Microsoft
+              Announces New Internet Technologies, Major Alliance With
+              CompuServe
+            </a>
+            <p>
+              Code-named Normandy, the new platform is targeted for commercial
+              Internet providers, operators and developers. CompuServe will use
+              Normandy and promote Internet Explorer as its primary Internet
+              browser.
+            </p>
+          </li>
+          <li>
+            <a href="#" style="color: #000; text-decoration: none">
+              <i class="fas fa-folder" style="color: #ffcc00"></i> Stifled by a
+              Sluggish Modem? Speed up with Microsoft Network’s ISDN
+            </a>
+            <p>
+              Microsoft Network is the first Internet service offering
+              dual-channel ISDN access. Dual-channel ISDN delivers
+              multimedia-rich content up to eight times faster than a 14.4 modem
+              connection. Check out MSN’s prices.
+            </p>
+          </li>
+          <li>
+            <a href="#" style="color: #000; text-decoration: none">
+              <i class="fas fa-folder" style="color: #ffcc00"></i> See Other Hot
+              Features of Internet Explorer 3.0 Beta
+            </a>
+            <p>
+              Join the
+              <a href="#">Online Internet Explorer 3.0 Logo Program</a>.
+              Announce your site is on the cutting edge! Download
+              <a href="#">Microsoft NetMeeting 1.0 Beta</a>. Get real-time
+              Internet voice or data communication. Free!
+            </p>
+          </li>
+          <li>
+            <a href="#" style="color: #000; text-decoration: none">
+              <i class="fas fa-folder" style="color: #ffcc00"></i> Meet the Six
+              Winners in Microsoft's Imagine The Magic Contest
+            </a>
+            <p>
+              Kids ages 6-11 were asked to tell us things the coolest computer
+              could do, and these six won! They’ll visit Microsoft and their
+              computers and schools.
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Popup div -->
+
+      <div class="footer">
+        <!-- Top Section with Dropdowns -->
+        <div class="top-section">
+          <div class="dropdowns">
+            <select name="country" id="country">
+              <option value="" disabled selected>Select a Country</option>
+              <option value="usa">USA</option>
+              <option value="uk">UK</option>
+              <option value="germany">Germany</option>
+              <option value="japan">Japan</option>
+            </select>
+            <button>GO!</button>
+
+            <select name="product" id="product">
+              <option value="" disabled selected>Select a Product</option>
+              <option value="windows">Windows</option>
+              <option value="office">Office</option>
+              <option value="developer-tools">Developer Tools</option>
+              <option value="games">Games</option>
+            </select>
+            <button>GO!</button>
+          </div>
+        </div>
+
+        <img class="image-right" src="backoffice.png" alt="BackOffice Icon" />
+
+        <!-- Main Text and Links -->
+        <div>
+          <a href="#">Read Bill Gates' Opinion on Internet Censorship</a>
+        </div>
+        <div class="nav-links">
+          <a href="#">Worldwide Offices</a> | <a href="#">Products</a> |
+          <a href="#">Support</a> | <a href="#">For Developers Only</a> |
+          <a href="#">Partners & Solutions</a> |
+          <a href="#">Internet Resource Center</a> |
+          <a href="#">Download Internet Explorer</a> |
+          <a href="#">Visit Microsoft</a> |
+          <a href="#">Visit MSN</a>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer">
+          &copy;1996 Microsoft Corporation. Last Updated: Fri Jun 07 19:29:47
+          1996
+        </div>
+      </div>
+    </div>
+    <script>
+      window.onload = function () {
+        const popup = document.createElement("div");
+        popup.classList.add("popup");
+        popup.innerHTML = `
+    <strong>Welcome to the 90s Web!</strong><br>
+
+    <strong>Did you know?</strong><br>
+    - Windows 95 launched in 1995, introducing the Start Menu.<br>
+    Relive the golden age of tech!<br><br>
+    <button onclick="this.parentElement.style.display='none'">Close!</button>
+  `;
+        popup.style.height = "400px";
+        popup.style.width = "400px";
+        popup.style.backgroundColor = "#0a246a";
+        popup.style.color = "#ffffff";
+        popup.style.padding = "20px";
+        popup.style.border = "5px solid #ffffff";
+        document.body.appendChild(popup);
+      };
+
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          document.getElementById("loading-screen").style.display = "none";
+          document.querySelector(".container").style.visibility = "visible";
+          document.querySelector(".footer").style.visibility = "visible";
+          document.querySelector(".sidebar").style.visibility = "visible";
+          document.querySelector(".content").style.visibility = "visible";
+          var audio = document.getElementById("windows-sound");
+          audio.play();
+        }, 3000);
+      });
+
+      window.addEventListener("load", function () {
+        var audio = document.getElementById("windows-sound");
+        audio.muted = false;
+        audio.play().catch(function (error) {
+          console.log("Audio playback failed:", error);
+        });
+      });
+    </script>
+    <script src="clippy.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </body>
+</html>
