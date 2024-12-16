@@ -1,8 +1,8 @@
-# Clippy Bot - 90s Nostalgia Website
+# Microsoft Website - Remake like it's the 90s!
 
 Welcome to **Clippy Bot - 90s Nostalgia Website**! This site brings back memories of the 90s with a mix of fun, retro animations, interactive elements, and, of course, the infamous Clippy Bot! Experience the nostalgia through a playful, quirky web interface.
 
-### Best Viewwed on Laptop/Desktop!
+### Best Viewed on Laptop/Desktop!
 
 ---
 
